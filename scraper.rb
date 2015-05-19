@@ -28,7 +28,7 @@ end
 
 
 page = noko(@PAGE)
-page.css('table tr').drop(1).each do |mem|
+page.css('table tr').drop(2).each do |mem|
   tds = mem.css('td')
   data = { 
     id: '2010-' + tds[0].text.strip,
