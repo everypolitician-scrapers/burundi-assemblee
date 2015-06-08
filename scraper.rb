@@ -3,9 +3,7 @@
 
 require 'scraperwiki'
 require 'nokogiri'
-require 'date'
 require 'open-uri'
-require 'date'
 
 # require 'colorize'
 # require 'pry'
@@ -22,11 +20,6 @@ def noko(url)
   Nokogiri::HTML(open(url).read) 
 end
 
-def datefrom(date)
-  Date.parse(date)
-end
-
-
 page = noko(@PAGE)
 page.css('table tr').drop(2).each do |mem|
   tds = mem.css('td')
@@ -35,6 +28,7 @@ page.css('table tr').drop(2).each do |mem|
     name: tds[1].text.strip,
     area: tds[2].text.strip,
     party: tds[3].text.strip,
+    party_id: tds[3].text.strip,
     term: '2010',
     source: @PAGE,
   }
